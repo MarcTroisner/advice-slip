@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import validatePayload from '@/store/helpers/validationHelper';
+import validatePayload from '@/helpers/validation';
 
 const status = {
   PENDING: 'pending',
@@ -13,7 +13,7 @@ export default createStore({
   },
   mutations: {
     UPDATE_STATUS(state, payload) {
-      state.status = payload.status;
+      state.status = status[payload.status];
     },
   },
   actions: {

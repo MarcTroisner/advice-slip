@@ -1,12 +1,9 @@
 <template>
-  <p>{{ $store.state.status }}</p>
+  <TheFooter/>
 </template>
 
-<script>
-export default {
-  mounted() {
-  },
-};
+<script setup>
+import TheFooter from '@/components/TheFooter.vue';
 </script>
 
 <style lang="scss">
