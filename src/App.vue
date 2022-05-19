@@ -10,5 +10,10 @@ import TheFooter from '@/components/TheFooter.vue';
 </script>
 
 <style lang="scss">
-/* HAS TO BE HERE IF NO CSS IS WRITTEN HERE */
+#app {
+  height: 100vh;
+  width: 100vw;
+  padding: 0 10vw;
+  padding-bottom: $footer-height;
+}
 </style>

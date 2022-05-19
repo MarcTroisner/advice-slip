@@ -3,6 +3,26 @@
 
 
 // Base font styles
+h1 {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 2.4rem;
+  color: $font-header;
+  text-align: center;
+  text-transform: uppercase;
+  max-width: 25em;
+}
+
+h3 {
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+  color: $font-header;
+  text-align: center;
+}
+
 p {
   font-family: 'Montserrat';
   font-weight: 400;
@@ -27,6 +47,15 @@ p.error {
     height: 100%;
     background: $font-error;
   }
+}
+
+a {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.9rem;
+  color: $font-link;
+  text-decoration: none;
 }
 
 input[type="text"] {

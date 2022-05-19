@@ -56,9 +56,9 @@ function handleSubmit() {
   @include position($pos: relative);
   padding: 0 2.5em;
   width: fit-content;
-  max-width: $base-search-input-max-width;
-  height: $base-search-input-height;
-  border-bottom-width: $base-search-input-border;
+  max-width: $search-input-max-width;
+  height: $search-input-height;
+  border-bottom-width: $search-input-border;
   border-bottom-style: solid;
   border-bottom-color: $border-input;
   transition: border-color 0.2s ease-in-out;
@@ -72,7 +72,7 @@ function handleSubmit() {
   }
 
   .search-input__term-icon {
-    @include position($pos: absolute, $top: 50%, $right: 1em);
+    @include position($top: 50%, $right: 1em);
     transform: translateY(-50%);
   }
 }

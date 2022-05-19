@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store/index';
 import RandomSlip from '@/views/RandomSlip.vue';
@@ -20,7 +21,9 @@ const routes = [
     path: '/error',
     name: 'FetchError',
     component: FetchError,
-    beforeEnter: () => store.getters.fetchFailed,
+    beforeEnter: () => {
+      if (store.getters.fetchFailed === false) return { name: 'RandomSlip' };
+    },
   },
   {
     path: '/:pathMatch(.*)*',
