@@ -1,3 +1,7 @@
 <template>
-  <p>RandomSlip</p>
+  <SearchInputTerm/>
 </template>
+
+<script setup>
+import SearchInputTerm from '@/components/SearchInputTerm.vue';
+</script>
