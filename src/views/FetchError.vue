@@ -4,15 +4,21 @@
     <h3>... maybe try again or reload the page.</h3>
     <BaseButton
       text="Try another slip"
-      icon="reload"
-      @click="$router.push({ name: 'RandomSlip' })"
+      icon="redo"
+      @click="handleClick()"
     />
   </div>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
 import BaseButton from '@/components/BaseButton.vue';
 
+const router = useRouter();
+
+function handleClick() {
+  router.push({ name: 'AdviceSlips' });
+}
 </script>
 
 <style lang="scss" scoped>

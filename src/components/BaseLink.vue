@@ -36,34 +36,14 @@ defineProps({
 .base-link {
   @include flex-wrapper($align: center);
   @include position($pos: relative);
-  column-gap: 0.8em;
+  column-gap: 0.4em;
 
-  &::before, &::after {
-    content: '';
-    height: 0.1em;
-    background: $border-link;
-    border-radius: 0.05em;
-    transition: width 0.3s ease-in-out;
+  &:hover .base-link__icon {
+    transform: translateX(0.4em);
   }
 
-  &::before {
-    @include position($bottom: 0, $left: 0);
-    width: 1.5em;
-  }
-
-  &::after {
-    @include position($bottom: 0, $right: 0);
-    width: 0;
-  }
-
-  &:hover::before {
-    @include position($bottom: 0, $left: 0);
-    width: 1em;
-  }
-
-  &:hover::after {
-    @include position($bottom: 0, $right: 0);
-    width: calc(100% - 1.5em);
+  .base-link__icon {
+    transition: transform 0.4s ease-in-out;
   }
 }
 </style>

@@ -7,13 +7,20 @@
 // @return true if validation is successful or false if validation failed
 export default function validatePayload(payload, keysToValidate, cb) {
   const validate = [];
+  let isValid = false;
+
+  // Check if payload has been passed
+  if (payload === undefined) {
+    if (cb !== undefined) cb(isValid);
+    return isValid;
+  }
 
   // Check if param keysToValidate is passed as an array of keys
   if (Array.isArray(keysToValidate)) validate.push(...keysToValidate);
   else validate.push(keysToValidate);
 
   // Check if key is included in payload
-  const isValid = validate.every((key) => Object.keys(payload).includes(key));
+  isValid = validate.every((key) => Object.keys(payload).includes(key));
 
   if (isValid === false && process.env.NODE_ENV !== 'production') console.warn('Payload validation failed');
 

@@ -31,6 +31,14 @@ p {
   color: $font-paragraph;
 }
 
+p.download {
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1rem;
+  color: $font-link;
+}
+
 p.error {
   @include position($pos: relative);
   font-family: 'Montserrat';

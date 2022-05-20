@@ -1,19 +1,21 @@
 import { createStore } from 'vuex';
+import axios from 'axios';
 import validatePayload from '@/helpers/validation';
-
-const status = {
-  PENDING: 'pending',
-  OK: 'ok',
-  ERROR: 'error',
-};
 
 export default createStore({
   state: {
-    status: status.PENDING,
+    status: 'PENDING',
+    slips: [],
   },
   mutations: {
     UPDATE_STATUS(state, payload) {
-      state.status = status[payload.status];
+      state.status = payload.status;
+    },
+    PUSH_SLIP(state, payload) {
+      state.slips.push(payload.slip);
+    },
+    CLEAR_SLIPS(state) {
+      state.slips = [];
     },
   },
   actions: {
@@ -21,16 +23,50 @@ export default createStore({
       // Check if correct payload has been passed
       if (validatePayload(payload, ['status']) === false) return;
 
-      // Check if new status is defined in status
-      if (validatePayload(status, payload.status) === false) return;
-
       // Commit UPDATE_STATUS mutation
       commit('UPDATE_STATUS', payload);
     },
+    getSlips({ commit }, payload) {
+      let endpoint = 'https://api.adviceslip.com/advice';
+
+      // Set status to pending
+      commit('UPDATE_STATUS', 'PENDING');
+
+      // Check for search term
+      validatePayload(payload, ['search'], (isValid) => {
+        if (isValid) endpoint = `${endpoint}/search/${payload.search}`;
+      });
+
+      // Clear previous slips
+      commit('CLEAR_SLIPS');
+
+      // Fetch slips
+      axios.get(endpoint)
+        .then((res) => {
+          const { data } = res;
+
+          // Check if search has been used and push data
+          if (data.query !== undefined) {
+            data.slips.forEach((slip) => commit('PUSH_SLIP', { slip }));
+          } else commit('PUSH_SLIP', { slip: data.slip });
+
+          // Update status
+          commit('UPDATE_STATUS', 'OK');
+        })
+        .catch(() => {
+          commit('UPDATE_STATUS', { status: 'ERROR' });
+        });
+    },
   },
   getters: {
-    fetchFailed(state) {
-      return state.status === status.ERROR;
+    getStatus(state) {
+      return state.status;
+    },
+    getFetchFailed(state) {
+      return state.status === 'ERROR';
+    },
+    getSlips(state) {
+      return state.slips;
     },
   },
 });

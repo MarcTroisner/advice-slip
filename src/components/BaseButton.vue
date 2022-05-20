@@ -2,7 +2,6 @@
   <button class="base-button">
     <HandleIcons
       v-if="icon !== undefined"
-      class="base-button__icon"
       classType="button"
       :type="icon"
     />
@@ -32,19 +31,11 @@ defineProps({
   padding: 0 2em;
   width: fit-content;
   height: $base-button-height;
-  column-gap: 0.8em;
+  column-gap: 0.6em;
   background: $background-button;
   border-radius: $base-button-height / 2;
   box-shadow: $shadow-button;
   cursor: pointer;
-
-  &:hover .base-button__icon {
-    transform: rotate(180deg);
-  }
-
-  .base-button__icon {
-    transition: transform 0.4s ease-in-out;
-  }
 
   .base-button__text {
     color: $font-button;

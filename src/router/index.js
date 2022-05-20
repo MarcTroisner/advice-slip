@@ -1,28 +1,22 @@
 /* eslint-disable consistent-return */
 import { createRouter, createWebHistory } from 'vue-router';
 import store from '@/store/index';
-import RandomSlip from '@/views/RandomSlip.vue';
-import SearchTermSlip from '@/views/SearchTermSlip.vue';
+import AdviceSlips from '@/views/AdviceSlips.vue';
 import FetchError from '@/views/FetchError.vue';
 import NotFound from '@/views/NotFound.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'RandomSlip',
-    component: RandomSlip,
-  },
-  {
-    path: '/search',
-    name: 'SearchTermSlip',
-    component: SearchTermSlip,
+    name: 'AdviceSlips',
+    component: AdviceSlips,
   },
   {
     path: '/error',
     name: 'FetchError',
     component: FetchError,
     beforeEnter: () => {
-      if (store.getters.fetchFailed === false) return { name: 'RandomSlip' };
+      if (store.getters.getFetchFailed === false) return { name: 'AdviceSlips' };
     },
   },
   {
