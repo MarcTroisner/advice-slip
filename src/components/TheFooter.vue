@@ -1,7 +1,7 @@
 <template>
   <footer class="footer">
     <p>Lovely advice for lovely people</p>
-    <HandleIcons type="heart"/>
+    <HandleIcons type="heart" classType="default-size"/>
   </footer>
 </template>
 

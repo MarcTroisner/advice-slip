@@ -1,0 +1,50 @@
+<template>
+  <div class="base-carousel-item">
+    <h2>{{ slip }}</h2>
+    <p class="base-carousel-item__author">{{ author }}</p>
+  </div>
+</template>
+
+<script setup>
+import { defineProps } from 'vue';
+
+defineProps({
+  slip: {
+    type: String,
+    required: true,
+  },
+  author: {
+    type: String,
+    required: true,
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+.base-carousel-item {
+  @include flex-wrapper($direction: column, $align: center, $justify: center);
+  @include position($pos: absolute, $top: 0, $left: 0);
+  z-index: -1;
+  opacity: 0;
+  row-gap: 1.2em;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease-in-out;
+
+  h2::before, h2::after {
+    content: '"';
+  }
+
+  .base-carousel-item__author {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: $font-author;
+    align-self: flex-end;
+
+    &::before {
+      content: '~ ';
+    }
+  }
+}
+</style>

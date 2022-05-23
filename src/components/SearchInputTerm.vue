@@ -19,24 +19,23 @@
       type="clear"
     />
   </form>
-  <div v-if="invalidInput" class="search-input__term-error">
+  <div v-if="showError" class="search-input__term-error">
     <p class="error">Only single-word terms are supported.</p>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, defineEmits } from 'vue';
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
 import HandleIcons from '@/components/HandleIcons.vue';
-
-// Define emitted events
-const emit = defineEmits(['submit']);
 
 // Define local state
 const input = ref('');
+const store = useStore();
 
 // Define computed properties
 const showIcon = computed(() => input.value !== '');
-const invalidInput = computed(() => input.value.split(' ').length !== 1);
+const showError = computed(() => input.value.split(' ').length !== 1);
 
 // Define methods
 function clearInput() {
@@ -44,9 +43,9 @@ function clearInput() {
 }
 
 function handleSubmit() {
-  if (invalidInput.value) return;
+  if (showError.value || input.value === '') return;
 
-  emit('submit', input);
+  store.dispatch('getSlips', { search: input.value });
 }
 </script>
 

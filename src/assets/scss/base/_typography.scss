@@ -14,6 +14,16 @@ h1 {
   max-width: 25em;
 }
 
+h2 {
+  font-family: 'Montserrat';
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.6rem;
+  word-wrap: break-word;
+  color: $font-header;
+  text-align: center;
+}
+
 h3 {
   font-family: 'Montserrat';
   font-weight: 400;
@@ -29,14 +39,6 @@ p {
   font-style: normal;
   font-size: 1rem;
   color: $font-paragraph;
-}
-
-p.download {
-  font-family: 'Montserrat';
-  font-weight: 500;
-  font-style: normal;
-  font-size: 1rem;
-  color: $font-link;
 }
 
 p.error {

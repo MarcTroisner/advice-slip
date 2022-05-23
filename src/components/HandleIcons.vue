@@ -9,10 +9,10 @@
       <path d="M16 8L7.99997 16" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <svg v-if="type === 'arrow_left'"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M13 15L10 12L13 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12.2929 15.7071C12.6834 16.0976 13.3166 16.0976 13.7071 15.7071C14.0976 15.3166 14.0976 14.6834 13.7071 14.2929L12.2929 15.7071ZM10 12L9.29289 11.2929C8.90237 11.6834 8.90237 12.3166 9.29289 12.7071L10 12ZM13.7071 9.70711C14.0976 9.31658 14.0976 8.68342 13.7071 8.29289C13.3166 7.90237 12.6834 7.90237 12.2929 8.29289L13.7071 9.70711ZM13.7071 14.2929L10.7071 11.2929L9.29289 12.7071L12.2929 15.7071L13.7071 14.2929ZM10.7071 12.7071L13.7071 9.70711L12.2929 8.29289L9.29289 11.2929L10.7071 12.7071Z" fill="black"/>
     </svg>
     <svg v-if="type === 'arrow_right'"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.7071 8.29289C11.3166 7.90237 10.6834 7.90237 10.2929 8.29289C9.90237 8.68342 9.90237 9.31658 10.2929 9.70711L11.7071 8.29289ZM14 12L14.7071 12.7071C15.0976 12.3166 15.0976 11.6834 14.7071 11.2929L14 12ZM10.2929 14.2929C9.90237 14.6834 9.90237 15.3166 10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L10.2929 14.2929ZM10.2929 9.70711L13.2929 12.7071L14.7071 11.2929L11.7071 8.29289L10.2929 9.70711ZM13.2929 11.2929L10.2929 14.2929L11.7071 15.7071L14.7071 12.7071L13.2929 11.2929Z" fill="black"/>
+      <path d="M11.7071 8.29289C11.3166 7.90237 10.6834 7.90237 10.2929 8.29289C9.90237 8.68342 9.90237 9.31658 10.2929 9.70711L11.7071 8.29289ZM14 12L14.7071 12.7071C15.0976 12.3166 15.0976 11.6834 14.7071 11.2929L14 12ZM10.2929 14.2929C9.90237 14.6834 9.90237 15.3166 10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L10.2929 14.2929ZM10.2929 9.70711L13.2929 12.7071L14.7071 11.2929L11.7071 8.29289L10.2929 9.70711ZM13.2929 11.2929L10.2929 14.2929L11.7071 15.7071L14.7071 12.7071L13.2929 11.2929Z"  fill="black"/>
     </svg>
     <svg v-if="type === 'download'"  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M6 21H18" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -43,19 +43,19 @@ defineProps({
   },
   classType: {
     type: String,
-    default: 'default',
+    required: true,
   },
 });
 </script>
 
 <style lang="scss" scoped>
-.default {
+.default-size {
   width: $base-icon-size;
   height: $base-icon-size;
 }
 
 .base {
-  @extend .default;
+  @extend .default-size;
   cursor: pointer;
   path {
     stroke: $fill-icons-base;
@@ -63,23 +63,31 @@ defineProps({
 }
 
 .button {
-  @extend .default;
+  @extend .default-size;
   path {
     stroke: $fill-icons-button;
   }
 }
 
 .buttonDownload {
-  @extend .default;
+  @extend .default-size;
   path {
     stroke: $fill-icons-button-secondary;
   }
 }
 
 .link {
-  @extend .default;
+  @extend .default-size;
   path {
     stroke: $fill-icons-link;
+  }
+}
+
+.carousel {
+  width: $carousel-icon-size;
+  height: $carousel-icon-size;
+  path {
+    fill: $fill-icons-base;
   }
 }
 </style>
