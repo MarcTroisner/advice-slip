@@ -19,18 +19,11 @@ export default createStore({
     },
   },
   actions: {
-    updateAppStatus({ commit }, payload) {
-      // Check if correct payload has been passed
-      if (validatePayload(payload, ['status']) === false) return;
-
-      // Commit UPDATE_STATUS mutation
-      commit('UPDATE_STATUS', payload);
-    },
     getSlips({ commit }, payload) {
       let endpoint = 'https://api.adviceslip.com/advice';
 
       // Set status to pending
-      commit('UPDATE_STATUS', 'PENDING');
+      commit('UPDATE_STATUS', { status: 'PENDING' });
 
       // Check for search term
       validatePayload(payload, ['search'], (isValid) => {
@@ -51,7 +44,7 @@ export default createStore({
           } else commit('PUSH_SLIP', { slip: data.slip });
 
           // Update status
-          commit('UPDATE_STATUS', 'OK');
+          commit('UPDATE_STATUS', { status: 'OK' });
         })
         .catch(() => {
           commit('UPDATE_STATUS', { status: 'ERROR' });

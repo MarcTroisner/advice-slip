@@ -6,17 +6,22 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, computed } from 'vue';
+import authors from '@/assets/authors.json';
 
+// Define props
 defineProps({
   slip: {
     type: String,
     required: true,
   },
-  author: {
-    type: String,
-    required: true,
-  },
+});
+
+// Define computed properties
+const author = computed(() => {
+  const { placeholders } = authors;
+
+  return placeholders[Math.floor(Math.random() * placeholders.length)];
 });
 </script>
 

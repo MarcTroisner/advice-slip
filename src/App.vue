@@ -30,7 +30,7 @@ watch(appStatus, (newStatus) => {
 #app {
   height: 100vh;
   width: 100vw;
-  padding: 0 10vw;
-  padding-bottom: $footer-height;
+  padding: 5vh 10vw;
+  padding-bottom: calc($footer-height + 10vh);
 }
 </style>

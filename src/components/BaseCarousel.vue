@@ -16,7 +16,6 @@
         :key="slip.id"
         :class="{ active: index === active }"
         :slip="slip.advice"
-        author="Some random dude"
         @click="log(index)"
       />
     </div>
@@ -34,7 +33,6 @@
 </template>
 
 <script setup>
-/* eslint-disable */
 import { ref, defineProps, computed } from 'vue';
 import HandleIcons from '@/components/HandleIcons.vue';
 import BaseCarouselItem from '@/components/BaseCarouselItem.vue';
@@ -63,10 +61,6 @@ function handleClick(slideRight) {
   if (active.value <= -1) active.value = slips.length - 1;
   if (active.value >= slips.length) active.value = 0;
 }
-
-function log(msg) {
-  console.log(msg);
-}
 </script>
 
 <style lang="scss" scoped>
@@ -75,6 +69,7 @@ function log(msg) {
   column-gap: 1em;
   width: 100%;
   max-width: $carousel-max-width;
+  min-height: 10em;
 
   .base-carousel__content {
     display: grid;
