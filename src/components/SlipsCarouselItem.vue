@@ -29,12 +29,12 @@ const author = computed(() => {
 .base-carousel-item {
   @include flex-wrapper($direction: column, $align: center, $justify: center);
   @include position($pos: absolute, $top: 0, $left: 0);
+  @include base-transition(opacity, 0.5s);
   z-index: -1;
   opacity: 0;
   row-gap: 1.2em;
   width: 100%;
   height: 100%;
-  transition: opacity 0.5s ease-in-out;
 
   h2::before, h2::after {
     content: '"';

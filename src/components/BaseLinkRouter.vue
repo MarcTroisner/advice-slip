@@ -1,11 +1,11 @@
 <template>
-  <router-link class="base-link" :to="{ name: routeName }">
+  <router-link class="base-link-router" :to="{ name: routeName }">
     {{ text }}
     <HandleIcons
       v-if="icon !== undefined"
-      class="base-link__icon"
+      class="base-link-router__icon"
       classType="link"
-      :type="icon"
+      type="arrow_link"
     />
   </router-link>
 </template>
@@ -26,24 +26,21 @@ defineProps({
     type: String,
     required: true,
   },
-  icon: {
-    type: String,
-  },
 });
 </script>
 
 <style lang="scss" scoped>
-.base-link {
+.base-link-router {
   @include flex-wrapper($align: center);
   @include position($pos: relative);
   column-gap: 0.4em;
 
-  &:hover .base-link__icon {
+  &:hover .base-link-router__icon {
     transform: translateX(0.4em);
   }
 
-  .base-link__icon {
-    transition: transform 0.4s ease-in-out;
+  .base-link-router__icon {
+    @include base-transition(transform, 0.4s)
   }
 }
 </style>

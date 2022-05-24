@@ -38,6 +38,12 @@ export default createStore({
         .then((res) => {
           const { data } = res;
 
+          // Check if data got returned
+          if (data.message !== undefined) {
+            commit('UPDATE_STATUS', { status: 'NORESULTS' });
+            return;
+          }
+
           // Check if search has been used and push data
           if (data.query !== undefined) {
             data.slips.forEach((slip) => commit('PUSH_SLIP', { slip }));
@@ -57,6 +63,9 @@ export default createStore({
     },
     getFetchFailed(state) {
       return state.status === 'ERROR';
+    },
+    getNoResults(state) {
+      return state.status === 'NORESULTS';
     },
     getSlips(state) {
       return state.slips;

@@ -16,5 +16,6 @@ module.exports = {
     'max-len': 'off',
     'linebreak-style': 'off',
     'object-curly-newline': 'off',
+    'new-cap': 'off',
   },
 };

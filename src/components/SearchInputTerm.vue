@@ -1,7 +1,7 @@
 <template>
-  <form class="search-input__term" @submit.prevent="handleSubmit()">
+  <form class="search-input-term" @submit.prevent="handleSubmit()">
     <label
-      class="search-input__term-input"
+      class="search-input-term__input"
       for="seach"
     >
       <input
@@ -14,12 +14,12 @@
     <HandleIcons
       v-if="showIcon"
       @click="clearInput()"
-      class="search-input__term-icon"
+      class="search-input-term__icon"
       classType="base"
       type="clear"
     />
   </form>
-  <div v-if="showError" class="search-input__term-error">
+  <div v-if="showError" class="search-input-term__error">
     <p class="error">Only single-word terms are supported.</p>
   </div>
 </template>
@@ -50,9 +50,10 @@ function handleSubmit() {
 </script>
 
 <style lang="scss" scoped>
-.search-input__term {
+.search-input-term {
   @include flex-wrapper($align: center);
   @include position($pos: relative);
+  @include base-transition(border-color, 0.2s);
   padding: 0 2.5em;
   width: fit-content;
   max-width: $search-input-max-width;
@@ -60,23 +61,22 @@ function handleSubmit() {
   border-bottom-width: $search-input-border;
   border-bottom-style: solid;
   border-bottom-color: $border-input;
-  transition: border-color 0.2s ease-in-out;
 
   &:focus-within {
     border-bottom-color: $border-input-active;
   }
 
-  .search-input__term-input {
+  .search-input-term__input {
     height: 100%;
   }
 
-  .search-input__term-icon {
+  .search-input-term__icon {
     @include position($top: 50%, $right: 1em);
     transform: translateY(-50%);
   }
 }
 
-.search-input__term-error {
+.search-input-term__error {
   margin-top: 0.8em;
 }
 </style>

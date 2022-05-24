@@ -2,16 +2,15 @@
   <div class="not-found">
     <h1>Looks like even we can't give you the advice you need</h1>
     <h3>... or maybe you are just lost. Let us help.</h3>
-    <BaseLink
-      routeName="RandomSlip"
+    <BaseLinkRouter
+      routeName="AdviceSlips"
       text="Find your way back"
-      icon="arrow_link"
     />
   </div>
 </template>
 
 <script setup>
-import BaseLink from '@/components/BaseLink.vue';
+import BaseLinkRouter from '@/components/BaseLinkRouter.vue';
 
 </script>
 

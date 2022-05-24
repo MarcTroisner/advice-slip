@@ -15,3 +15,8 @@
   bottom: $bottom;
   left: $left;
 }
+
+// Base transition mixin
+@mixin base-transition($property, $duration: 0.3s) {
+  transition: $property $duration ease-in-out;
+}

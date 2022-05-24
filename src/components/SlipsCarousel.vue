@@ -11,7 +11,7 @@
       />
     </div>
     <div class="base-carousel__content">
-      <BaseCarouselItem
+      <SlipsCarouselItem
         v-for="(slip, index) in slips"
         :key="slip.id"
         :class="{ active: index === active }"
@@ -33,34 +33,34 @@
 </template>
 
 <script setup>
-import { ref, defineProps, computed } from 'vue';
+import { ref, computed, defineExpose } from 'vue';
+import { useStore } from 'vuex';
 import HandleIcons from '@/components/HandleIcons.vue';
-import BaseCarouselItem from '@/components/BaseCarouselItem.vue';
-
-// Define props
-const props = defineProps({
-  slips: {
-    type: Array,
-    required: true,
-  },
-});
+import SlipsCarouselItem from '@/components/SlipsCarouselItem.vue';
 
 // Define state
+const store = useStore();
 const active = ref(0);
 
 // Define computed properties
-const showNavigation = computed(() => props.slips.length >= 2);
+const slips = computed(() => store.getters.getSlips);
+const showNavigation = computed(() => slips.value.length >= 2);
+const getActiveSlip = computed(() => slips.value[active.value]);
 
 // Define methods
 function handleClick(slideRight) {
-  const { slips } = props;
   const offset = (slideRight) ? 1 : -1;
 
   active.value += offset;
 
-  if (active.value <= -1) active.value = slips.length - 1;
-  if (active.value >= slips.length) active.value = 0;
+  if (active.value <= -1) active.value = slips.value.length - 1;
+  if (active.value >= slips.value.length) active.value = 0;
 }
+
+// Expose active slip
+defineExpose({
+  getActiveSlip,
+});
 </script>
 
 <style lang="scss" scoped>
@@ -80,8 +80,9 @@ function handleClick(slideRight) {
   }
 
   .base-carousel__navigation {
+    @include base-transition(background-color);
     border-radius: calc($carousel-icon-size / 2);
-    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
 
     &:hover {
       background: $background-hover;
