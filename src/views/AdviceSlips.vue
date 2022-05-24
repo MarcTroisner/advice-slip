@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, ref, onBeforeMount } from 'vue';
 import { useStore } from 'vuex';
 import { jsPDF } from 'jspdf';
 import SearchInputTerm from '@/components/SearchInputTerm.vue';
@@ -76,6 +76,11 @@ function handleDownload() {
   doc.text(adviceSplit, offsetX, offsetY, 'center');
   doc.save(`advice_slip_${id}.pdf`);
 }
+
+// Define lifecycle hooks
+onBeforeMount(() => {
+  store.dispatch('getSlips');
+});
 </script>
 
 <style lang="scss" scoped>

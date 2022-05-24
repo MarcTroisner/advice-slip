@@ -2,7 +2,6 @@
   <router-link class="base-link-router" :to="{ name: routeName }">
     {{ text }}
     <HandleIcons
-      v-if="icon !== undefined"
       class="base-link-router__icon"
       classType="link"
       type="arrow_link"

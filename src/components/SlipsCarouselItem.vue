@@ -38,6 +38,10 @@ const author = computed(() => {
 
   h2::before, h2::after {
     content: '"';
+
+    @media print {
+      content: '';
+    }
   }
 
   .base-carousel-item__author {
@@ -46,6 +50,10 @@ const author = computed(() => {
     font-size: 0.8rem;
     color: $font-author;
     align-self: flex-end;
+
+    @media print {
+      display: none;
+    }
 
     &::before {
       content: '~ ';

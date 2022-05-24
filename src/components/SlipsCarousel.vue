@@ -92,5 +92,15 @@ defineExpose({
 
 .active {
   opacity: 1;
+
+  @media print {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background: $background-element;
+  }
 }
 </style>

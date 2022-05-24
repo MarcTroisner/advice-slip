@@ -22,6 +22,12 @@ h2 {
   word-wrap: break-word;
   color: $font-header;
   text-align: center;
+
+  @media print {
+    font-family: 'Courier';
+    font-size: 4.16rem;
+    max-width: 10em;
+  }
 }
 
 h3 {
