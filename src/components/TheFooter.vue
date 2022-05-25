@@ -12,7 +12,6 @@ import HandleIcons from '@/components/HandleIcons.vue';
 <style lang="scss" scoped>
 .footer {
   @include flex-wrapper($align: center, $justify: center);
-  @include position($pos: fixed, $bottom: 0, $left: 0);
   width: 100vw;
   height: $footer-height;
   column-gap: 0.8em;

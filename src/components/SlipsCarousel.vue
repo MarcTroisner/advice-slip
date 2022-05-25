@@ -1,8 +1,8 @@
 <template>
-  <div class="base-carousel">
+  <div class="slips-carousel">
     <div
       v-if="showNavigation"
-      class="base-carousel__navigation"
+      class="slips-carousel__navigation"
     >
       <HandleIcons
         type="arrow_left"
@@ -10,7 +10,7 @@
         @click="handleClick(false)"
       />
     </div>
-    <div class="base-carousel__content">
+    <div class="slips-carousel__content">
       <SlipsCarouselItem
         v-for="(slip, index) in slips"
         :key="slip.id"
@@ -21,7 +21,7 @@
     </div>
     <div
       v-if="showNavigation"
-      class="base-carousel__navigation"
+      class="slips-carousel__navigation"
     >
       <HandleIcons
         type="arrow_right"
@@ -64,14 +64,14 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.base-carousel {
+.slips-carousel {
   @include flex-wrapper($align: center, $justify: center);
   column-gap: 1em;
   width: 100%;
   max-width: $carousel-max-width;
-  min-height: 10em;
+  min-height: 20em;
 
-  .base-carousel__content {
+  .slips-carousel__content {
     display: grid;
     place-content: center;
     @include position($pos: relative);
@@ -79,7 +79,7 @@ defineExpose({
     height: 100%;
   }
 
-  .base-carousel__navigation {
+  .slips-carousel__navigation {
     @include base-transition(background-color);
     border-radius: calc($carousel-icon-size / 2);
     cursor: pointer;
@@ -91,6 +91,7 @@ defineExpose({
 }
 
 .active {
+  position: relative;
   opacity: 1;
 
   @media print {

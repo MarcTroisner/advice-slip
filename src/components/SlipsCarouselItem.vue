@@ -1,7 +1,7 @@
 <template>
-  <div class="base-carousel-item">
+  <div class="slips-carousel-item">
     <h2>{{ slip }}</h2>
-    <p class="base-carousel-item__author">{{ author }}</p>
+    <p class="slips-carousel-item__author">{{ author }}</p>
   </div>
 </template>
 
@@ -26,7 +26,7 @@ const author = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.base-carousel-item {
+.slips-carousel-item {
   @include flex-wrapper($direction: column, $align: center, $justify: center);
   @include position($pos: absolute, $top: 0, $left: 0);
   @include base-transition(opacity, 0.5s);
@@ -44,7 +44,7 @@ const author = computed(() => {
     }
   }
 
-  .base-carousel-item__author {
+  .slips-carousel-item__author {
     font-weight: 300;
     font-style: italic;
     font-size: 0.8rem;

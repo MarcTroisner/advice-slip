@@ -28,9 +28,9 @@ watch(appStatus, (newStatus) => {
 
 <style lang="scss">
 #app {
-  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
   width: 100vw;
-  padding: 5vh 10vw;
-  padding-bottom: calc($footer-height + 10vh);
 }
 </style>

@@ -1,28 +1,33 @@
 <template>
   <div class="advice-slips">
     <SearchInputTerm/>
-    <SlipsCarousel
-      ref="download"
-      v-if="showLoading === false && noResults === false"
-    />
-    <BaseLoading v-else-if="showLoading"/>
-    <h2
-      class="advice-slips__no-results"
-      v-else-if="noResults"
+    <BaseLoading v-if="showLoading"/>
+    <div
+      class="advice-slips__content"
+      v-else
     >
-      Looks like we don't have advice for THAT.
-    </h2>
-    <div class="advice-slips__buttons">
-      <BaseButton
-        text="Get a random slip"
-        icon="leaf"
-        @click="handleClick()"
+      <SlipsCarousel
+        ref="download"
+        v-if="noResults === false"
       />
-      <BaseButtonAction
-        text="Download as PDF"
-        icon="download"
-        @click="handleDownload()"
-      />
+      <h2
+        class="advice-slips__content__no-results"
+        v-else
+      >
+        Looks like we don't have advice for THAT.
+      </h2>
+      <div class="advice-slips__content__buttons">
+        <BaseButton
+          text="Get a random slip"
+          icon="leaf"
+          @click="handleClick()"
+        />
+        <BaseButtonAction
+          text="Download as PDF"
+          icon="download"
+          @click="handleDownload()"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -85,19 +90,23 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 .advice-slips {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  justify-items: center;
-  row-gap: 2em;
-  height: 100%;
+  @include flex-wrapper($direction: column, $align: center);
+  padding: 5vh 10vw;
 
-  .advice-slips__no-results {
-    align-self: center;
-  }
+  .advice-slips__content {
+    @include flex-wrapper($direction: column, $align: center, $justify: center);
+    row-gap: 2em;
+    height: 100%;
+    width: 100%;
 
-  .advice-slips__buttons {
-    @include flex-wrapper($direction: column, $align: center);
-    row-gap: 1em;
+    .advice-slips__content__no-results {
+      align-self: center;
+    }
+
+    .advice-slips__content__buttons {
+      @include flex-wrapper($direction: column, $align: center);
+      row-gap: 1em;
+    }
   }
 }
 </style>

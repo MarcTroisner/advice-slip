@@ -10,7 +10,7 @@ export default function validatePayload(payload, keysToValidate, cb) {
   let isValid = false;
 
   // Check if payload has been passed
-  if (payload === undefined) {
+  if (payload === undefined || keysToValidate === undefined) {
     if (cb !== undefined) cb(isValid);
     return isValid;
   }

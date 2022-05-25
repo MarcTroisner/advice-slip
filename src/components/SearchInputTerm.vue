@@ -58,6 +58,7 @@ function handleSubmit() {
   width: fit-content;
   max-width: $search-input-max-width;
   height: $search-input-height;
+  background: $background-element;
   border-bottom-width: $search-input-border;
   border-bottom-style: solid;
   border-bottom-color: $border-input;
