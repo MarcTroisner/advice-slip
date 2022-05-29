@@ -1,19 +1,28 @@
+/* eslint-disable consistent-return */
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
+import store from '@/store/index';
+import AdviceSlips from '@/views/AdviceSlips.vue';
+import FetchError from '@/views/FetchError.vue';
+import NotFound from '@/views/NotFound.vue';
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView,
+    name: 'AdviceSlips',
+    component: AdviceSlips,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    path: '/error',
+    name: 'FetchError',
+    component: FetchError,
+    beforeEnter: () => {
+      if (store.getters.getFetchFailed === false) return { name: 'AdviceSlips' };
+    },
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound,
   },
 ];
 

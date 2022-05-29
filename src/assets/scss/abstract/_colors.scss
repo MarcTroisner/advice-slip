@@ -1,0 +1,33 @@
+// Background colors
+$background-element: rgba(255, 255, 255, 1);
+$background-footer: rgba(255, 255, 255, 1);
+$background-button: rgba(40, 146, 215, 1);
+$background-button-hover: rgb(46, 155, 228);
+$background-hover: rgba(40, 146, 215, 0.2);
+
+// Border colors
+$border-input: rgba(164, 164, 164, 1);
+$border-input-active: rgba(40, 146, 215, 1);
+$border-link: rgba(40, 146, 215, 1);
+$border-loading: rgba(221, 221, 221, 1);
+$border-loading-animate: rgba(45, 49, 66, 1);
+
+// Box shadows
+$shadow-footer: 6px 0px 6px 0px rgba(0, 0, 0, 0.12);
+$shadow-button: 3px 3px 6px 0px rgba(0, 0, 0, 0.12);
+
+// Font colors
+$font-error: rgba(255, 77, 77, 1);
+$font-header: rgba(45, 49, 66, 1);
+$font-paragraph: rgba(45, 49, 66, 1);
+$font-button: rgba(255, 255, 255, 1);
+$font-link: rgba(40, 146, 215, 1);
+$font-author: rgba(98, 98, 98, 1);
+$font-placeholder: rgba(164, 164, 164, 1);
+$font-input: rgba(45, 49, 66, 1);
+
+// Fill colors
+$fill-icons-base: rgba(45, 49, 66, 1);
+$fill-icons-button: rgba(255, 255, 255, 1);
+$fill-icons-button-secondary: rgba(40, 146, 215, 1);
+$fill-icons-link: rgba(40, 146, 215, 1);

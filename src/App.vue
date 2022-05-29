@@ -1,30 +1,36 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <router-view v-slot="{ Component }">
+    <component :is="Component"/>
+  </router-view>
+  <TheFooter/>
 </template>
+
+<script setup>
+import { watch, computed } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import TheFooter from '@/components/TheFooter.vue';
+
+// Define state
+const store = useStore();
+const router = useRouter();
+
+// Define computed properties
+const appStatus = computed(() => store.getters.getStatus);
+
+// Define watchers
+watch(appStatus, (newStatus) => {
+  // React to status changes
+  if (newStatus === 'ERROR') router.push({ name: 'FetchError' });
+  if (newStatus === 'PENDING') router.push({ name: 'AdviceSlips' });
+});
+</script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
+  width: 100vw;
 }
 </style>
